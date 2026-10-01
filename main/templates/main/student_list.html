@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ffe6f0, #ffc1d9);
+            min-height: 100vh;
+            color: #5a2140;
+        }
+
+        nav {
+            background-color: #d63384;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        nav h2 {
+            font-size: 24px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ffd6e7;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 50px auto;
+        }
+
+        .card {
+            background-color: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(214, 51, 132, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #d63384;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        th {
+            background-color: #d63384;
+            color: white;
+            padding: 15px;
+        }
+
+        td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #f5c2d7;
+        }
+
+        tr:nth-child(even) {
+            background-color: #fff0f6;
+        }
+
+        tr:hover {
+            background-color: #ffd6e7;
+        }
+
+        .back-btn {
+            display: block;
+            width: fit-content;
+            margin: 30px auto 0;
+            padding: 12px 25px;
+            background-color: #ff69b4;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        .back-btn:hover {
+            background-color: #d63384;
+        }
+
+        .empty {
+            text-align: center;
+            color: #888;
+            padding: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #8a3d5c;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <h2>🎓 Student System</h2>
+
+        <div>
+            <a href="/">Home</a>
+            <a href="/students/">Students</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+
+            <h1>🌸 Student Records 🌸</h1>
+
+            {% if students %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Student ID</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Course</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for student in students %}
+                    <tr>
+                        <td>{{ student.student_id }}</td>
+                        <td>{{ student.name }}</td>
+                        <td>{{ student.age }}</td>
+                        <td>{{ student.course }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            {% else %}
+                <p class="empty">No student records found.</p>
+            {% endif %}
+
+            <a href="/" class="back-btn">← Back to Home</a>
+
+        </div>
+    </div>
+
+    <footer>
+        © 2026 Student Management System
+        © Lester Genton
+    </footer>
+
+</body>
+</html>
